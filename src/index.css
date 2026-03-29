@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-highlight: rgba(255, 255, 255, 0.2);
+}
+
+@layer base {
+  body {
+    background-color: #0a0a0c;
+    color: white;
+    min-height: 100vh;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(239, 68, 68, 0.05) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-card-glossy {
+    background-color: var(--color-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card-glossy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom right, var(--color-glass-highlight), transparent);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .btn-glossy {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .btn-glossy:active {
+    transform: scale(0.95);
+  }
+
+  .btn-glossy::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(to right, #10b981, #0d9488);
+    color: white;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .btn-danger {
+    background: linear-gradient(to right, #f43f5e, #e11d48);
+    color: white;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .input-glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    color: white;
+    transition: all 0.2s;
+  }
+
+  .input-glass:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5);
+  }
+}
